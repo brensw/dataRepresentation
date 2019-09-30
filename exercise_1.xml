@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library>
+    <Technical_Books>
+     <Book>
+        <name>Beginning XML</name>
+        <author>Joe Fawcett</author>
+        <IBSN>9781118162132</IBSN>
+     </Book>
+
+     <Book>
+        <name>XML in a Nutshell</name>
+        <author>Elliotte Rusty Harold</author>
+        <IBSN>9780596007645</IBSN>
+     </Book>
+    </Technical_Books>
+    <Cooking_Books>
+     <Book>
+        <name>Plenty More</name>
+        <author>Yotam Ottolenghi</author>
+        <IBSN>9780091957155</IBSN>
+     </Book>
+
+     <Book>
+        <name>Syria: Recipes from Home</name>
+        <author>Itab Azzam</author>
+        <IBSN>9781474604505</IBSN>
+     </Book>
+    </Cooking_Books>
+</Library>
+    
