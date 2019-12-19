@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, abort
 from carsDAO import carsDAO
+import mysql.connector
 
 app = Flask(__name__, static_url_path='', static_folder='.')
 
@@ -19,11 +20,11 @@ def getAll():
 #curl "http://127.0.0.1:5000/books/2"
 @app.route('/cars/<int:id>')
 def findById(id):
-    foundcar = carsDAO.findByID(id)
+    foundCar = carsDAO.findByID(id)
 
-    return jsonify(foundBook)
+    return jsonify(foundCar)
 
-#curl  -i -H "Content-Type:application/json" -X POST -d "{\"make\":\"Peugoet\",\"year\":\"2018\",\"price\":20000}" http://127.0.0.1:5000/books
+#curl  -i -H "Content-Type:application/json" -X POST -d "{\"make\":\"Merc\",\"year\":\"2019\",\"price\":60000}" http://127.0.0.1:5000/books
 @app.route('/cars', methods=['POST'])
 def create():
     
@@ -36,15 +37,15 @@ def create():
         "price": request.json['price'],
     }
     values =(car['make'],car['year'],car['price'])
-    newId = carDAO.create(values)
+    newId = carsDAO.create(values)
     car['id'] = newId
     return jsonify(car)
 
 #curl  -i -H "Content-Type:application/json" -X PUT -d "{\"Title\":\"hello\",\"Author\":\"someone\",\"Price\":123}" http://127.0.0.1:5000/books/1
 @app.route('/cars/<int:id>', methods=['PUT'])
 def update(id):
-    foundcar = carsDAO.findByID(id)
-    if not foundcar:
+    foundCar = carsDAO.findByID(id)
+    if not foundCar:
         abort(404)
     
     if not request.json:
@@ -54,14 +55,14 @@ def update(id):
         abort(400)
 
     if 'year' in reqJson:
-        foundBook['year'] = reqJson['year']
+        foundCar['year'] = reqJson['year']
     if 'make' in reqJson:
-        foundBook['make'] = reqJson['make']
+        foundCar['make'] = reqJson['make']
     if 'price' in reqJson:
-        foundBook['price'] = reqJson['price']
-    values = (foundcar['make'],foundcar['year'],foundcar['price'],foundcar['id'])
-    carDAO.update(values)
-    return jsonify(foundcar)
+        foundCar['price'] = reqJson['price']
+    values = (foundCar['make'],foundCar['year'],foundCar['price'],foundCar['id'])
+    carsDAO.update(values)
+    return jsonify(foundCar)
         
 
     

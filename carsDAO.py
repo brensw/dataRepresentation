@@ -1,5 +1,5 @@
 import mysql.connector
-class carsDAO:
+class CarsDAO:
     db=""
     def __init__(self): 
         self.db = mysql.connector.connect(
@@ -8,9 +8,11 @@ class carsDAO:
         password="root",
         database="project"
         )
+    
+            
     def create(self, values):
         cursor = self.db.cursor()
-        sql="insert into cars (make,year,price ) values (%s,%s,%s)"
+        sql="insert into cars (make,year, price) values (%s,%s,%s)"
         cursor.execute(sql, values)
 
         self.db.commit()
@@ -20,8 +22,14 @@ class carsDAO:
         cursor = self.db.cursor()
         sql="select * from cars"
         cursor.execute(sql)
-        result = cursor.fetchall()
-        return result
+        results = cursor.fetchall()
+        returnArray = []
+        print(results)
+        for result in results:
+            print(result)
+            returnArray.append(self.convertToDictionary(result))
+
+        return returnArray
 
     def findByID(self, id):
         cursor = self.db.cursor()
@@ -30,10 +38,11 @@ class carsDAO:
 
         cursor.execute(sql, values)
         result = cursor.fetchone()
-        return result
+        return self.convertToDictionary(result)
+
     def update(self, values):
         cursor = self.db.cursor()
-        sql="update cars set make= %s, year= %s, price= %s  where id = %s"
+        sql="update cars set make= %s,year=%s, price=%s  where id = %s"
         cursor.execute(sql, values)
         self.db.commit()
     def delete(self, id):
@@ -46,4 +55,15 @@ class carsDAO:
         self.db.commit()
         print("delete done")
 
-carsDAO = carsDAO()
+    def convertToDictionary(self, result):
+        colnames=['id','make','year', "price"]
+        item = {}
+        
+        if result:
+            for i, colName in enumerate(colnames):
+                value = result[i]
+                item[colName] = value
+        
+        return item
+        
+carsDAO = CarsDAO()

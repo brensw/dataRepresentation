@@ -9,7 +9,7 @@ db = mysql.connector.connect(
 
 cursor=  db.cursor()
 sql='insert into cars (make, year, price) values (%s,%s,%s)'
-values= ('Audi', '2019','30000')
+values= ('Ford', '2016','15000')
 cursor.execute(sql,values)
 
 db.commit()
