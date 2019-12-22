@@ -151,7 +151,10 @@
         console.log(JSON.stringify(car))
         return car
     }
+
+    h
     function getAllAjax(){
+        host= window.location.origin
         $.ajax({
             "url": host+"/cars",
             "method":"GET",
@@ -170,7 +173,8 @@
         });
     }
     function createCarAjax(car){
-        //var car = {"reg":"12 D 1234","make":"Fiat","model":"Punto","price":3000}
+        host= window.location.origin
+      
         console.log(JSON.stringify(car));
         $.ajax({
             "url": host+"/cars",
@@ -188,7 +192,7 @@
         });
     }
     function updateCarAjax(car){
-        //var car = {"reg":"12 D 1234","price":8000}
+        host= window.location.origin
         console.log(JSON.stringify(car));
         $.ajax({
             "url": host+"/cars/"+encodeURI(car.id),
@@ -206,7 +210,7 @@
         });
     }
     function deleteCarAjax(id){
-        //var car = {"reg":"12 D 1234"}
+        host= window.location.origin
         console.log(JSON.stringify(car));
         $.ajax({
             "url": host+"/cars/"+encodeURI(id),
