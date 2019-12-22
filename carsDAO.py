@@ -1,6 +1,6 @@
 import mysql.connector
 import dbconfig as dbc
-import MySQLdb
+
 
 
 
@@ -37,7 +37,7 @@ class CarsDAO:
         return cursor.lastrowid
 
     def getAll(self):
-         cursor = self.getCursor()
+        cursor = self.getCursor()
         sql="select * from cars"
         cursor.execute(sql)
         results = cursor.fetchall()
@@ -50,7 +50,7 @@ class CarsDAO:
         return returnArray
 
     def findByID(self, id):
-         cursor = self.getCursor()
+        cursor = self.getCursor()
         sql="select * from cars where id = %s"
         values = (id,)
 
@@ -68,7 +68,7 @@ class CarsDAO:
 
 
     def delete(self, id):
-         cursor = self.getCursor()
+        cursor = self.getCursor()
         sql="delete from cars where id = %s"
         values = (id,)
 
