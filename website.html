@@ -72,10 +72,7 @@
         car.year = form.querySelector('input[name="year"]').value
         car.price = form.querySelector('input[name="price"]').value
         createCarAjax(car)
-        setCarInRow(rowElement,car);
-
-        clearForm();
-        showViewAll();
+        
         console.log(JSON.stringify(car))
         
         
