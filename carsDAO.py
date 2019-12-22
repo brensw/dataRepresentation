@@ -1,5 +1,25 @@
 import mysql.connector
 import dbconfig as dbc
+import MySQLdb
+
+
+class DB:
+    conn=None
+
+    def connect(self):
+        self.comm=MySQLdb.connect()
+
+    def query(sefl, sql):
+        try:
+            cursor=self.conn.cursor()   
+            cursor.execute(sql)
+        except (AttributeError, MySQLdb.OperationalError):
+            self.connect()   
+            cursor =self.conn.cursor()
+            cursor.execute(sql)
+        return cursor    
+
+
 class CarsDAO:
     db=""
     def __init__(self): 
