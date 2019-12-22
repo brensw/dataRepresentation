@@ -4,15 +4,7 @@ import mysql.connector
 
 app = Flask(__name__, static_url_path='', static_folder='.')
 
-app.config["DEBUG"] = True
-  mysql = MySQL()
 
-
-app.config['MYSQL_DATABASE_USER'] = 'root'
-  app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
-  app.config['MYSQL_DATABASE_DB'] = 'project'
-  app.config['MYSQL_DATABASE_HOST'] = 'brendansw.mysql.pythonanywhere-services.com'
-  mysql.init_app(app)
 
 #app = Flask(__name__)
 

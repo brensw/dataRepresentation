@@ -1,12 +1,13 @@
 import mysql.connector
+import dbconfig as dbc
 class CarsDAO:
     db=""
     def __init__(self): 
         self.db = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="root",
-        database="project"
+        host= dbc.mysql['host'],
+        user =dbc.mysql['user'],
+        password=dbc.mysql['password'],
+        database=dbc.mysql['database']
         )
     
             
