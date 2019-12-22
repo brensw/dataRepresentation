@@ -154,9 +154,9 @@
 
     
     function getAllAjax(){
-        host= windows.location.origin
+        host= window.location.origin
         $.ajax({
-            "url": host+"/cars",
+            "url": host +"/cars",
             "method":"GET",
             "data":"",
             "dataType": "JSON",
@@ -173,11 +173,11 @@
         });
     }
     function createCarAjax(car){
-        host= windows.location.origin
+        host = window.location.origin
       
         console.log(JSON.stringify(car));
         $.ajax({
-            "url": host+"/cars",
+            "url": host +"/cars",
             "method":"POST",
             "data":JSON.stringify(car),
             "dataType": "JSON",
@@ -192,10 +192,10 @@
         });
     }
     function updateCarAjax(car){
-        host= windows.location.origin
+        host = window.location.origin
         console.log(JSON.stringify(car));
         $.ajax({
-            "url": host+"/cars/"+encodeURI(car.id),
+            "url": host +"/cars/"+encodeURI(car.id),
             "method":"PUT",
             "data":JSON.stringify(car),
             "dataType": "JSON",
@@ -210,7 +210,7 @@
         });
     }
     function deleteCarAjax(id){
-        host= windows.location.origin
+        host = window.location.origin
         console.log(JSON.stringify(car));
         $.ajax({
             "url": host+"/cars/"+encodeURI(id),
